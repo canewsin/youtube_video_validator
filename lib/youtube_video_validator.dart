@@ -8,7 +8,7 @@ import 'package:youtube_video_validator/model/youtube_video_model.dart';
 
 /// Youtube Video Validator
 class YoutubeVideoValidator {
-  static const String _uriVideoInfo = 'http://youtube.com/get_video_info';
+  static const String _uriVideoInfo = 'https://www.youtube.com/get_video_info';
   static final Map<String, String> _playabilityStatus = {
     'ok': 'OK',
     'login_required': 'LOGIN_REQUIRED',
@@ -47,7 +47,7 @@ class YoutubeVideoValidator {
 
     final String url = '$_uriVideoInfo?video_id=$videoID';
 
-    final response = await http.get(url);
+    final response = await http.get(Uri.parse(url));
 
     if (response.statusCode != 200) {
       return false;
